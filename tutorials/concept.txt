@@ -1,0 +1,191 @@
+#  Dependencies and DevDependencies :
+
+difference between both is -
+if  the package is required only during the development of
+your project not in production in that case we install
+packages under DevDependencies.
+for example:
+ nodemon package: this package helps to restart your server
+ whenever your save your file , so this is the requirment which
+ needs during development only , that;s why we have to install
+ this package under DevDependencies.
+
+  npm i nodemon --save-dev 
+
+======================
+
+Basic Exteions of Vscode :
+
+Gitlense 
+Elint => vs code > setting > settings > search format eslint 
+         > check enable Eslint as formatter > search format > check format on save and paste > select defualt formater eslint.
+material icon
+
+=================
+shorcut key : ctrl + j   termainal 
+=====================
+Multiple apcakge installation :
+
+npm install dotenv cors 
+Note : here dotenv and cors are two different package
+
+#.env => This file contains envrionment varaible of your project.
+        Basically it stores configuration settings of your application.
+        the file name will always be .env
+
+        To access .env varaible in another file you have to access using 
+
+        process.env.varibalname
+        example: process.env.PORT
+
+==================================================
+1. MVC ARCHITECTURE =>
+   
+   The Model-view-controller (MVC) is a design pattern in Web development.
+   This is the way to organize our code .
+
+   It consist of three layers :
+     1. Model => It represents the businness layer of application.
+                It is an object which carry the data and communicate with database and return response to controller.
+
+     2. View  => It represents the presentation layer  of our application.
+                Use to Visualize the data which return from our model through controller.
+      
+     3. Controller => It works between model and view . Use to manage 
+                    the flow of application i.e whenever a new request it helps to process the
+                    request data and send it to model and once model return the reponse it send the data to view. 
+
+      Notes: use the given screenshot to under MVC flow .
+
+
+Advantage :  
+    1. The modules or components are easy to maintain beacuse of
+      less Dependencies
+    2.useing MVC , the application becomes more understandable 
+    3. It gives benfit of reusability of code  
+    4. Developers caan work with the all three layers  simultineously.
+==================================================
+ 2. MIDDLWWARE:
+  
+    Middleware in Node js refers to components or modules that
+    sit between  the server and the application's main logic i.e 
+    between processing request and reponses.  
+
+    This provide functionalities like  
+      login authentication
+      routing  
+      data validation etc .
+
+    * Middleware is a piece of code in an application pipeline
+    used to handle requests and reposnses 
+    
+    for example  
+     
+     Request (DATA )  =>  Middleware ( validate the Data) =>  IF the data validation success => then call next () i.e controller 
+
+                                                          => OR If the data validation fails => then it stop furter action ie. no call to controller. and it directly send response .
+===================================================
+3. REST =>
+  
+  API Design is one of the most crucial steps in software development.
+  Over the years various API Architectural styles have comes in picture  ,
+  including REST , SOAP ,WebHooks, GraphQL. 
+   
+  (REST => Representational State Transfer) is an Architectural
+  style for designing web services(API)  that enables communication 
+  between clients ( eg web browser , moibile app) and server  over the HTTP protocol.
+
+  Example:
+  CLIENT(APP/ WEB BROWSER)  =======>  Rest API  =======> WEB SERVER 
+                            <=======            <=======
+
+  Rest uses HTTP methods (GET , POST ,PUT , PATCH , DELETE)
+  GET => when retrive the data 
+  PUT => When you have to update the data (Major update)
+  POST => when you have to save the data 
+  DELETE => when you have to delete the data 
+  PATCH=> This method is also use to update but for minor update
+
+Example: of API Endpoints: 
+  
+  Method :GET 
+  API END point : https://localhost:5000/api/v1/getemployee/101
+  PARAM: id =101
+
+  Method POST 
+  API END point : https://localhost:5000/api/v1/savemployee 
+  BODY : {
+     "username":"raj",
+     "password:"123",
+     "age":20
+  }
+
+4. HTTPS STATUS :
+   Each API repsonse includes an HTTP status code , 
+   Which indicates the result of the reuest . 
+   This meaningfull status code is importants for helping consumers 
+    of your API . 
+
+   Success: ( 200 to 299)
+      200 => OK 
+      201 => Created 
+
+   4XX =>Client Error
+      400 => Bad Request  ( invalid data )
+      401 => unauthorized 
+      404 => Not found 
+   
+   5XX => Server Error 
+      500 => Internal server error 
+      503 => service unavailable.
+
+==================================================
+EVENT LOOP= > Event Loop is an infinite loop which continously
+            check call stack and whenever the call stack is empty it fetch task from 
+            task queue or microtask queue (where microstaks queue has hight priority) and execute in call stack.
+
+Five Important function of array in javascript 
+
+1. filter (): creates a new array with elements that 
+             pass a specific condition , it runs for every element of array
+        example:
+
+        const numbers=[22,30,11,14,13];
+        const evennumbers=numbers.filter(num=>num % 2===0);
+        console.log(evennumbers) // a new array with even number
+
+2.map(): Transforms each element of an array using a provided
+        function and returns  a new array 
+
+        example:
+         
+         const numbers=[1,2,3,4]
+         const doubleNumber=numbers.map(num=>num*2);
+         console.log(doubleNumber); // return array 
+
+3.forEach(): It helps to run a loop over your array 
+
+const numbers=[8,4,5,5];
+numbers.forEach((num)=>{
+   console.log(num) // 8 ,4,5,5
+}) 
+
+4.reduce(): Applies a function against an accumulator and each element in the array to
+reduce it to a single value , here pre is previous data and current is current elemet of array.
+
+    const numbers=[8,4,5,5];
+    const result=numbers.reduce((pre,current)=>pre+current,10);
+    console.log(result) // 32
+    Note: here 10 is the first previous value
+
+5.concat(): Merges two or more arrays into a new array 
+   
+   const arr1=[78,99,99];
+   const arr2=[66,22,33,11];
+   const mered_array=arr1.concat(arr2);
+   console.log(mered_array);//[78,99,99,66,22,33,11]
+
+6.splice(): this helps to return array elemnt on the basis of index  with added element.
+
+const student=['raj','prince','khusi','akash','ayush'];
+student.splice(2,0,'Amit');

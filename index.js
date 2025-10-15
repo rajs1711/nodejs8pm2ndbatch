@@ -1,7 +1,7 @@
-//const express=require('express'); // this way we require package in our file
-//const  utility =require('./utils');
-import express from 'express';
-import {getData,addData} from './utils.js';
+const express=require('express'); // this way we require package in our file
+const  utility =require('./utils');
+//import express from 'express';
+//import {getData,addData} from './utils.js';
 
 const app = express();// this way we creae object from express package 
 
@@ -31,36 +31,9 @@ JSON example:
   "data":[89,10,30],
   "isActive":true
 }
-
 */
-
-// Routes
-app.get('/',(req,res)=>{
-    res.send('Hello Server is UP');
-})
-
-app.get('/api/welcome',(req,res)=>{
-    res.send('Welcome to our NODE JS API datas');
-});
-app.get('/customer-success/',(req,res)=>{
-    res.send('customer success file loading...ssasasas')
-});
-
-app.get('/about-us',(req,res)=>{
-    res.send('About')
-})
-app.get('/login',(req,res)=>{
-    //const r=utility.getData();
-    const r=getData();
-    res.json({"msg":"Data return succesfully","data":r})
-});
-
-app.post('/api/signup',(req,res)=>{
-
-    console.log(req.body);
-    res.json({"msg":"your account created successfully","dummyPassword":"Abvsh7shsh"});
-});
-
+app.use('/api/v1',require('./routes/commonRoutes'));
+app.use('/api/v1',require('./routes/authRoutes'));
 //start sever
 app.listen(PORT,()=>{
     console.log('Your Serve is started... on PORT'+PORT );

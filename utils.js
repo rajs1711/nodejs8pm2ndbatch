@@ -13,8 +13,8 @@ function addData(x,y){
     return x+y
 }
 
-/*module.exports={
+module.exports={
     getData,
     addData
-}*/
-export { getData, addData}
+}
+//export { getData, addData}
