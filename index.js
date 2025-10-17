@@ -8,7 +8,7 @@ const app = express();// this way we creae object from express package
 app.use(express.json());// middleware to parse JSON(javascript object notation
 
 const PORT=8080;
-/*
+/*(JAVA SCRIPT OBJECT NOtIFICATIONsss)
 JSON=> 
 
 JSON is a popular data format often used by web developers for transferring data between a server and a web application.
