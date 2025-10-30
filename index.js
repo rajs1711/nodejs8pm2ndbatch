@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express=require('express'); // this way we require package in our file
 const  utility =require('./utils');
 //import express from 'express';
@@ -7,7 +8,6 @@ const app = express();// this way we creae object from express package
 
 app.use(express.json());// middleware to parse JSON(javascript object notation
 
-const PORT=8080;
 /*
 JSON=> 
 
@@ -35,7 +35,8 @@ JSON example:
 app.use('/api/v1',require('./routes/commonRoutes'));
 app.use('/api/v1',require('./routes/authRoutes'));
 //start sever
-app.listen(PORT,()=>{
-    console.log('Your Serve is started... on PORT'+PORT );
-    console.log(`your url http://localhost:${PORT}`)
+
+app.listen(process.env.PORT,()=>{
+    console.log('Your Serve is started... on PORT'+process.env.PORT );
+    console.log(`your url http://localhost:${process.env.PORT}`)
 })

@@ -38,6 +38,22 @@ Note : here dotenv and cors are two different package
         process.env.varibalname
         example: process.env.PORT
 
+.env file store data in key value format like the key, username,password,port etc. 
+
+Example:
+
+
+ PORT=8080
+
+ DB_HOST='TestDB'
+ DB_USERNAME='ABC@gmail.com'
+ DB_PASSWORD='2883sds'
+
+ API_PYAMENT_KEY='ssjs'
+
+ NOTE: whenever you change in your envrionment file you have to restart your
+      server to get the effect.
+
 ==================================================
 1. MVC ARCHITECTURE =>
    
