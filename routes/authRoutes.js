@@ -2,7 +2,7 @@ const express =require('express');
 const router=express.Router();
 const authController= require('../controller/authController')
 
-router.post('/signup',authController.signupFunction);
+router.post('/signup',verifydatavalidation,authController.signupFunction);
 
 router.post('/login',(req,res)=>{
     console.log(req.body);
