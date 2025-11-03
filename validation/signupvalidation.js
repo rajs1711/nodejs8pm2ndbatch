@@ -1,11 +1,12 @@
-const {joi} =require('express-validation');
+const {Joi} =require('express-validation');
 
-exports.signupvalidate={
+// validation rules
+exports.signupvalidattion={
     body:Joi.object({
         name:Joi.string().required(),
-        email : Joi.email().string().required(),
+        email : Joi.string().required(),
         mobile: Joi.string().required(),
-        address:Joi.string().optional()
+        address:Joi.string().allow(null)
 
     })
 }

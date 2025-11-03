@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express=require('express'); // this way we require package in our file
 const  utility =require('./utils');
+const { ValidationError } = require('express-validation');
 //import express from 'express';
 //import {getData,addData} from './utils.js';
 
@@ -32,8 +33,32 @@ JSON example:
   "isActive":true
 }
 */
+
+/*
+app.use() is used to register middleware in your Express app.
+Middleware functions are run in order before the request reaches your route handler (or after, for error-handling middleware).
+
+*/
+
 app.use('/api/v1',require('./routes/commonRoutes'));
 app.use('/api/v1',require('./routes/authRoutes'));
+
+
+
+// Error handler
+app.use(function (err, req, res, next) {
+  if (err instanceof ValidationError) {
+    return res.status(err.statusCode).json(err);
+  }
+
+  return res.status(400).json({
+    message: 'Data Validation Error',
+    error: err.message,
+  });
+});
+
+
+
 //start sever
 
 app.listen(process.env.PORT,()=>{
