@@ -205,3 +205,22 @@ reduce it to a single value , here pre is previous data and current is current e
 
 const student=['raj','prince','khusi','akash','ayush'];
 student.splice(2,0,'Amit');
+
+# API Rate limit:
+
+This is the concept where we define that from same IP Address how many time a user can 
+send request to our API.
+
+for example: we have signup API and we want in 2 minute window we will allow only 5
+request by  with same IP Address . that you can achieve using API Rate Limit concept. 
+
+#Exception Handling :
+
+This is the concept which we use to handle runtime exception .
+while you send request to your API at that time if any runtime execption/error '
+comes for example: you use variable which is not defined , that throw exception.
+
+If Exception arise /occur this will handled using catch block so that you will get proper error msg and
+your API not crashed.
+
+# Task: Please install Mongodb compass in your syystem (use to handle mongodb database)
