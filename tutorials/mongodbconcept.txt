@@ -1,0 +1,79 @@
+#MongoDB is a NoSQL(Not Only Sql) database 
+designed to store, query, and manage large volumes of 
+unstructured or semi-structured data.
+
+Here’s a clear breakdown:
+
+🧠 Basic Concept
+
+Unlike  relational databases (SQL) that use tables, rows, and columns, 
+MongoDB stores data in collections made up of documents.
+
+Each document is stored in a JSON-like format called BSON (Binary JSON) — which allows for flexible, nested data structures.
+
+📦 Example
+
+A document in MongoDB might look like this:
+
+{
+  "_id": 1,
+  "name": "Alice",
+  "age": 30,
+  "skills": ["Python", "MongoDB", "Node.js"],
+  "address": { "city": "London", "zip": "SW1A 1AA" }
+}
+
+
+This is much more flexible than a traditional table, since each document in the same collection can have different fields.
+
+⚙️ Key Features
+
+Schema-less: You don’t need to define a rigid schema beforehand.
+
+Scalable: Built for horizontal scaling using sharding (spreading data across multiple servers).
+
+High performance: Supports fast reads and writes.
+
+Powerful query language: Supports rich queries, aggregations, and indexing.
+
+
+
+
+
+SQl =>  table => column => row row row 
+
+student
+
+Id  Name  Roll  address state
+1   saura  12   ahshs   null
+2   hshs   23    hjjsjs   bihar
+3   shhs   67    hjj     null
+
+As a document in collection 
+
+ stuent_collection 
+  { 
+    "ID":1
+    "name":"saurav",
+     "Roll":22,
+     "address":"patna"
+  },
+    { 
+    "ID":2
+    "name":"saurav",
+     "Roll":22,
+     "address":"patna",
+     "state":"bihar"
+  },
+  { 
+    "ID":3
+    "name":"saurav",
+     "address":"patna"
+  }
+
+
+comparison  =>  sql => table 
+                mongodb => collection 
+
+                sql => data 
+                mongodb => document
