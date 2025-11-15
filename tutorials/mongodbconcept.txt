@@ -215,3 +215,29 @@ db.students.find(
 
 )
 --------------
+15. WAQ to find student deatils whose age is less than equal to 24;
+
+sql=> select * from students where age<=24;
+mongodb=> db.students.find({"age":{$lte:24}});
+
+Note: $gte  ==> greater than equals to.
+
+16. WAQ to find students detail whose name is Saurav OR Gaurav
+
+sql => select * from students where name ='saurav' OR name='gaurav'
+mongodb=> db.students.find(
+  {
+	  $or:[
+	  {"name":"Saurav"},
+	  {"name":"gaurav"}
+	  ]
+  }
+);
+
+17. WAQ To Find Student details whose age is between 21 and 24 .
+
+sql => select * from students where age between(15,24)
+
+mongodb=>db.students.find({
+             "age":{$gte:15, $lte:24}
+         })
