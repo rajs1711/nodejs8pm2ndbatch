@@ -241,3 +241,108 @@ sql => select * from students where age between(15,24)
 mongodb=>db.students.find({
              "age":{$gte:15, $lte:24}
          })
+
+ WAQ to select students where address='delhi' and age 24 or 22;
+ 
+ sql => select * from students where address='delhi' and ( age =24 or age=22 );
+ 
+ mongodb =>  db.students.find(
+ 
+ {
+ 
+    $and:[
+        {"address":"delhi"},
+        {
+          
+           $or:[
+              
+              {"age":24},
+              {"age":22}
+           ]
+         }
+    ]
+ }
+ );
+ 
+18.  WAQ to select students where address='delhi' or  (age 24 or 22);
+  
+  => db.students.find(
+  
+      {
+      $or:[
+          
+          {"address":"delhi"},
+          {$or:[{age:24},{age:22}]}
+      ]
+      }
+  )
+  
+  
+  
+  
+19.select employees  where 
+[(department =sales and salary 70000) 
+and (managerId=29 or managerId=30) ] or  employeePosition='Teamlead'
+  
+  
+  
+  db.emaployees.find(
+  
+      {
+          
+      $or:{
+      
+            {
+                $and:[
+                {
+		        $and:[
+		              {department:"sales"},
+		              {salary:70000}
+
+		        ]
+                
+                },
+
+                {
+                        $or:[
+                             {managerId:29},
+		              {managerId:30}
+                         ]
+                
+                }
+         
+                 ]
+            },
+            
+            
+            {
+            employeePosition:'Teamlead'
+            }
+            
+      
+      
+      }
+
+      
+      }
+  
+  
+  
+  )
+  
+  
+  20.WAQ To find student details whose age in (15,24,25);
+  
+  db.students.find({
+  
+      age:{$in:[15,24,25]}
+  })
+  
+  
+  21.WAQ to find student details whose age not in (15,24,25) ;
+  
+  
+    db.students.find({
+  
+      age:{$nin:[15,24,25]}
+  })
