@@ -345,4 +345,29 @@ and (managerId=29 or managerId=30) ] or  employeePosition='Teamlead'
     db.students.find({
   
       age:{$nin:[15,24,25]}
-  })
+  });
+
+    1.select total number of records in students table;
+  
+  => db.students.countDocuments();
+  
+  22. select total number of records in students table whose age is greater than 24;
+  
+  db.students.find({
+  
+     age:{$gt:24}
+  }).count();     => this is deperacted style 
+  
+  
+  OR 
+  
+  db.students.countDocuments({age:{$gt:24}});  => this is new function
+  
+  
+  23. waq to find students deatails and sort by age  in descending order .
+  
+  db.students.find().sort({age:-1});  --descending
+
+  24. waq to find students deatails and sort by age  in ascending order .
+  
+  db.students.find().sort({age:1});  --ascending
