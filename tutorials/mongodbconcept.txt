@@ -371,3 +371,10 @@ and (managerId=29 or managerId=30) ] or  employeePosition='Teamlead'
   24. waq to find students deatails and sort by age  in ascending order .
   
   db.students.find().sort({age:1});  --ascending
+
+  26. WAQ to find students deatils where column age exists 
+
+  db.students.find({age:{$exists:true}});
+
+ 27. WAQ to find students deatils where column age does not exists 
+ db.students.find({age:{$exists:false}});
