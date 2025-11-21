@@ -378,3 +378,41 @@ and (managerId=29 or managerId=30) ] or  employeePosition='Teamlead'
 
  27. WAQ to find students deatils where column age does not exists 
  db.students.find({age:{$exists:false}});
+
+ 28.WAQ. to find student details whose age is more than 24 also verify wheater age exist or not 
+
+
+db.students.find({
+
+   $and:[
+      {age:{$exists:true}},
+      {age:{$gt:24}}
+   ]
+});
+
+29.WAQ. find  first four records/documents from your collections
+
+db.students.find().limit(4)
+
+30.WAQ to find student records and exculde first 2 record.
+
+db.students.find().skip(2)
+
+31.WAQ to find student recrds and exclude first two records and find next 4 records
+
+db.students.find().skip(2).limit(4)
+
+32.WAQ to find student details whose name like "s"
+
+db.stundents.find({
+
+  name:{$regex:/^s/}    // Note: this is case sensetive  means by deafault mongodb search in case senestive mode 
+
+});
+
+33.WAQ to find student details whose name like "s"
+db.stundents.find({
+
+  name:{$regex:/^s/,$options:"i"}    // Note: $options i helps to search without restriction of cases
+
+});
