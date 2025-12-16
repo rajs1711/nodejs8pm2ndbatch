@@ -416,3 +416,231 @@ db.stundents.find({
   name:{$regex:/^s/,$options:"i"}    // Note: $options i helps to search without restriction of cases
 
 });
+
+
+===========================  Aggregation PIPELINE ===================
+  * GroupBY  * avg,sum,max,min,sum * pipeline ,* stage
+=====================================================================
+ WAQ to find out total number of resturants in each location .
+
+Notes: to implement group we have to use Aggregation pipline .
+    
+       An aggregation pipleine is consist of one or more that one stages that process documents.
+         each stage performs an operation on the input documents  and which is the output for next stage .
+    An aggregation pipeline can return results of groups of document  for Exampl
+    total count , sum , average . or we can perform joins between collections.
+
+syntex:
+
+db. collectionname.aggregate([
+    {<stage 1>},
+    {<stage 2>},
+    {<stage 3>}
+]);
+
+
+students_collection
+
+{
+  "name":"saurav",
+  "department":"cs"
+},
+{
+  "name":"gaurav",
+  "department":"cs"
+},
+{
+  "name":"Rudra",
+  "department":"EC"
+},
+{
+  "name":"rahul",
+  "department":"cs"
+},
+{
+  "name":"bajrangi",
+  "department":"Civil"
+}
+
+
+
+1. WAQ to find out total number of students in each department .
+
+
+
+
+db.students.aggregate(
+[
+
+   {
+   
+     $group:{
+     
+         _id:"$address",
+         totalcount:{$sum:1}
+     }
+   }
+
+]
+
+);
+
+2. WAQ to find out total number of students in each department order by student count desc.
+
+
+db.students.aggregate(
+[
+
+   {
+   
+     $group:{
+     
+         _id:"$address",
+         totalcount:{$sum:1}
+     }
+   },
+   
+   {
+   
+    $sort:{totalcount:-1}
+   }
+
+]
+
+);
+
+2. WAQ to find out total number of students in each department order by student count desc limit 2
+
+
+
+db.students.aggregate(
+[
+
+   {                                                      // stage 1
+   
+     $group:{
+     
+         _id:"$address",
+         totalcount:{$sum:1}                               
+     }
+   },
+   
+   {                                                     //  stage 2
+   
+    $sort:{totalcount:-1}
+   },
+   
+   {                                                     //  stage 3
+   
+   $limit:2
+   
+   }
+
+]
+
+);
+
+ WAQ to find total salary dispose in each department  and sort the data in ascending order a/c to 
+totalSalary of each department in ascending order.
+
+
+db.employees.aggregate(
+
+  [
+  
+      {
+      
+        $group:{
+          
+          _id:"$department",
+          total_salary:{$sum:$salary}
+        }
+      
+      },
+      
+      {
+      
+        $sort:{salary:-1}
+      
+      }
+  
+  ]
+
+
+)
+
+ WAQ to find total salary dispose in each department and for each branch
+db.employees.aggregate([
+    {
+        $group:{
+            _id:{branch:"$branch",departemnt:"$department"}     // implemented grouping in multiple coulmns
+            totalSalary:{$sum:"$salary"}
+        }
+    }
+]);
+
+
+ WAQ to find total salary dispose in each department  and toatlsalary greater than 0 and sort the data in ascending order a/c to 
+totalSalary of each department in ascending order.
+
+
+db.employees.aggregate(
+
+  [
+  
+      {
+      
+        $group:{
+          
+          _id:"$department",
+          total_salary:{$sum:$salary}
+        }
+      
+      },
+      {
+        total_salary:{$gt:0}
+      
+      },
+      {
+      
+        $sort:{salary:-1}
+      
+      }
+  
+  ]
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
