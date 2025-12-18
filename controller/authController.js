@@ -1,4 +1,4 @@
-
+const signupModel= require('../model/signupModel');
 const signupFunction= async (req,res)=>{
      
        // exception handling 
@@ -16,6 +16,20 @@ const signupFunction= async (req,res)=>{
 
         // encrypt your password
         // save your above data in database
+
+         const result= await signupModel.insertOne({
+            name:name,
+            email:email,
+            mobile:mobile,
+            address:address,
+            password:newpassword
+         });
+
+
+        console.log(result)
+
+
+
         // return response 
 
         // data fetch from your request body

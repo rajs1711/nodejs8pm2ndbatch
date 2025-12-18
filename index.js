@@ -3,6 +3,7 @@ const express=require('express'); // this way we require package in our file
 const  utility =require('./utils');
 const { ValidationError } = require('express-validation');
 const { rateLimit } = require('express-rate-limit');
+const connectdb=require('./config/db.js')
 
 //import express from 'express';
 //import {getData,addData} from './utils.js';
@@ -74,6 +75,7 @@ app.use(function (err, req, res, next) {
 //start sever
 
 app.listen(process.env.PORT,()=>{
+    connectdb()
     console.log('Your Serve is started... on PORT'+process.env.PORT );
     console.log(`your url http://localhost:${process.env.PORT}`)
 })
