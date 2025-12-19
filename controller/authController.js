@@ -9,6 +9,18 @@ const signupFunction= async (req,res)=>{
         // if email and mobile already exists it means user try to duplicate
         // that is not allowed
         // Beacuse one email and mobile can create single account
+
+        const user= await signupModel.find({email:email}); // if found user.length =1
+
+        if(user.length >0){
+            return res.json({"msg":"ERROR: Username/email should be unique","data":req.body});
+        }else{
+            const user_mobile= await signupModel.find({mobile:mobile});
+            if(user_mobile.length >0){
+             return res.json({"msg":"ERROR: Mobile should be unique","data":req.body});
+            }
+        }
+
         // generate new password
         const rand_num = Math.floor(10000 + Math.random() * 90000);
         const newpassword= rand_num +'$pwd';
@@ -25,24 +37,10 @@ const signupFunction= async (req,res)=>{
             password:newpassword
          });
 
-
-        console.log(result)
-
-
-
-        // return response 
-
-        // data fetch from your request body
-        const yourDetails={
-            "mobile":req.body.mobile,
-            "name":req.body.name,
-            "username":"user1"+req.body.mobile,
-            "temppassword":newpassword
-
-        }
-        res.json({"msg":"your account created successfully","data":yourDetails});
+         
+        return res.json({"msg":"your account created successfully","data":result});
     }catch(err){
-        res .json({"msg":"Internal Server Error","status":500,"err":err})
+        return res .json({"msg":"Internal Server Error","status":500,"err":err})
     }
 }
 
