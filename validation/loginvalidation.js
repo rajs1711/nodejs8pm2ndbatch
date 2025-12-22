@@ -1,9 +1,10 @@
 const {Joi} =require('express-validation');
 
-exports.loginvalidate={
+// validation rules
+exports.loginvalidattion={
     body:Joi.object({
-        username:Joi.string().required(),
-        password : Joi.string().required()
+        email : Joi.string().required(),
+        password: Joi.string().required()
 
     })
 }

@@ -44,6 +44,25 @@ const signupFunction= async (req,res)=>{
     }
 }
 
+const loginFunction=async(req,res)=>{
+
+    const {email,password}=req.body
+    const user= await signupModel.find({email:email}); 
+    if(user.length > 0 ){
+            // email is correct now check password
+            const result= await signupModel.find({email:email,password:password}); 
+            if(result.length > 0 ){
+                 return res.json({"msg":"Login Successfully","status":200});
+            }else{
+                 return res.json({"msg":"Wrong password","status":400});
+            }
+
+    }else{
+       return res.json({"msg":"Email Not Exist","status":400})
+    }
+
+}
+
 module.exports={
-    signupFunction
+    signupFunction,loginFunction
 }
