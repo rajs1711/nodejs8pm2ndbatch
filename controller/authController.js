@@ -1,4 +1,6 @@
 const signupModel= require('../model/signupModel');
+const jwt=require("jsonwebtoken");
+
 const signupFunction= async (req,res)=>{
      
        // exception handling 
@@ -50,9 +52,17 @@ const loginFunction=async(req,res)=>{
     const user= await signupModel.find({email:email}); 
     if(user.length > 0 ){
             // email is correct now check password
-            const result= await signupModel.find({email:email,password:password}); 
+            const result= await signupModel.find({email:email,password:password},{email:1}); 
             if(result.length > 0 ){
-                 return res.json({"msg":"Login Successfully","status":200});
+                // generate token
+
+                const token= jwt.sign({
+                    email:result[0].email
+                },'yduh*&yhs56sghTHH',
+                {expiresIn:"1h"}
+               );
+                // return token
+                 return res.json({"msg":"Login Successfully","status":200,"token":token});
             }else{
                  return res.json({"msg":"Wrong password","status":400});
             }
@@ -63,6 +73,26 @@ const loginFunction=async(req,res)=>{
 
 }
 
+const profileFunction=async(req,res)=>{
+
+    const {email}=req.body
+    const user= await signupModel.find({email:email},{name:1,mobile:1}); 
+    console.log(user,'dddd');
+    if(user.length > 0 ){
+          const userDetail={
+            name:user[0].name,
+            mobile:user[0].mobile
+          }
+          const name=user[0].name;
+          const mobile=user[0].mobile;
+          return res.json({userDetail:userDetail,"msg":"User detail return successfully",status:200});
+
+    }else{
+       return res.json({"msg":"Email Not Exist","status":400})
+    }
+
+}
+
 module.exports={
-    signupFunction,loginFunction
+    signupFunction,loginFunction,profileFunction
 }
