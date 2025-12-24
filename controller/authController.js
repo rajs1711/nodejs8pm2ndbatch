@@ -54,7 +54,7 @@ const loginFunction=async(req,res)=>{
             // email is correct now check password
             const result= await signupModel.find({email:email,password:password},{email:1}); 
             if(result.length > 0 ){
-                // generate token
+                // generate tokenn
 
                 const token= jwt.sign({
                     email:result[0].email
