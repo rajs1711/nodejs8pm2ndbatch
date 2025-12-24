@@ -77,7 +77,6 @@ const profileFunction=async(req,res)=>{
 
     const {email}=req.body
     const user= await signupModel.find({email:email},{name:1,mobile:1}); 
-    console.log(user,'dddd');
     if(user.length > 0 ){
           const userDetail={
             name:user[0].name,
