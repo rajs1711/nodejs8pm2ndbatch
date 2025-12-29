@@ -55,7 +55,7 @@ const limiter = rateLimit({
 app.use(limiter)
 app.use('/api/v1',require('./routes/commonRoutes'));
 app.use('/api/v1',require('./routes/authRoutes'));
-
+app.use('/api/v1',require('./routes/foodRoutes'));
 
 
 // Error handler
