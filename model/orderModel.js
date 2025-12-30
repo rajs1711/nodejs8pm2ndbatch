@@ -1,30 +1,35 @@
 const mongoose=require('mongoose');
 
-//food design 
+//order design 
 
-const foodSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
+    orderNumber:{
+    type:String,
+    required:true
+    },
     itemId:{
         type:Number,
         required:true
     },
-    name:{
-        type:String,
+    count:{
+        type:Number,
         required:true
     },
-    price:{
-        type:Number,
+    orderTotal:{
+        type:String,
         required:true 
     },
-    cateogry:{
+    address:{
         type:String,
         required:true
     },
-    description:{
+    paymentmode:{
         type:String,
         required:true
     },
-    image:{
-        type:String
+    orderType:{
+        type:String,
+        required:true
     },
     createdBy:{
         type:String,
@@ -40,4 +45,4 @@ const foodSchema = new mongoose.Schema({
  }
 );
 
-module.exports=mongoose.model("Foods",foodSchema)
+module.exports=mongoose.model("Orders",orderSchema)
