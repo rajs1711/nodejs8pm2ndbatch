@@ -3,7 +3,7 @@ const jwt =require('jsonwebtoken');
 const authenticateToken= async (req,res,next)=>{
   
     try{
-        const {email}=req.body
+
       const token=req.header('Authorization')?.replace('Bearer ','');
       let data=null;
 

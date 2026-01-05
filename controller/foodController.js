@@ -84,7 +84,40 @@ const orderItem=async(req,res)=>{
     }
 }
 
+const orderHistory=async(req,res)=>{
+
+    try{
+        const email=req.user.email ;
+        const msg='Your Order fetched succcessfully'
+        
+        const order_details = await orderModel.aggregate([
+        {
+        $match:{
+            createdBy:email
+        }
+        },
+        {
+        $lookup: {
+            from: "foods",           // collection name (plural, lowercase!)
+            localField: "itemId",      // field in posts
+            foreignField: "itemId",     // field in users
+            as: "foodDetails"
+        }
+        },
+        {
+        $unwind: "$foodDetails"   // convert array to object
+        }
+        ]);
+
+
+        return res.json({"msg":msg,"data":order_details});
+    }catch(err){
+        console.log(err)
+        return res.json({"msg":"Internal Server Error","data":null});
+    }
+}
+
 
 module.exports={
-    createItem,orderItem
+    createItem,orderItem,orderHistory
 }
