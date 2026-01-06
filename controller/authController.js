@@ -36,7 +36,8 @@ const signupFunction= async (req,res)=>{
             email:email,
             mobile:mobile,
             address:address,
-            password:newpassword
+            password:newpassword,
+            profileImage:null
          });
 
          
@@ -92,6 +93,21 @@ const profileFunction=async(req,res)=>{
 
 }
 
+const profileImage=async(req,res)=>{
+    //console.log(req.profileImageUrl);
+                   const result=await signupModel.updateOne(
+                   { email:req.user.email},          // filter
+                   { $set: 
+                       
+                       { 
+                           profileImage: req.profileImageUrl
+                       } 
+                   
+                   } // update
+                   );
+
+    return res.json({"profile_url":req.profileImageUrl,"msg":"Profile image Updated successfully"})
+}
 module.exports={
-    signupFunction,loginFunction,profileFunction
+    signupFunction,loginFunction,profileFunction,profileImage
 }
