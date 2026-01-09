@@ -1,0 +1,29 @@
+Component:
+=================================================
+In React js Components are the building blocks that allow you to split the UI into 
+independent and reusable pices.
+  OR 
+A component in react js is a javascript function or class  that optionally
+accept s props and returns a react element  that describe 
+how a section of the UI should appear.
+
+Types: 1. Functional component 2. class component (now class component is not in use)
+
+.
+
+Note: whenever from component you want to retrun multiple html element in that case
+     you have to wrap all the html in one parent , for example 
+
+      <div>
+           <p>ssssS</p>
+           <h1>xssS</h1>
+      </div>
+
+      OR
+
+      React Fragment shorthand  <></>
+       <>
+            <p>ssssS</p>
+           <h1>xssS</h1>
+
+       </>
