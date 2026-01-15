@@ -35,3 +35,10 @@ Building a Single Page Application (SPA)
 with React offers numerous benefits focused on creating a fast, 
 fluid, and app-like user experience by dynamically updating 
 content without full page reloads. 
+
+props:(properties)
+
+In react we are using props to send data from parent component to child component.
+using props you can send any kind of data even you can also send function as a prop .
+
+This gives you feasibility to make your component content dynamically enabled.
