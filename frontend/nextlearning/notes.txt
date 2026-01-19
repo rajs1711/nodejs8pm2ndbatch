@@ -42,3 +42,54 @@ In react we are using props to send data from parent component to child componen
 using props you can send any kind of data even you can also send function as a prop .
 
 This gives you feasibility to make your component content dynamically enabled.
+
+
+Server Component
+==================
+Definition
+
+A Server Component is a component that runs only on the server. It renders on the server and sends the final HTML (or serialized result) to the browser. The client never downloads its JavaScript code.
+
+Key Characteristics
+
+Runs only on the server
+
+Cannot use browser-only features (DOM, window, document)
+
+Cannot use React hooks like useState, useEffect
+
+Can directly access:
+
+Databases
+
+Backend APIs
+
+File system
+
+Environment secrets
+
+Smaller bundle size → better performance
+
+============================================================
+
+Client Component
+
+Definition
+
+A Client Component is a component that runs in the browser and allows interactivity like clicks, state updates, and effects.
+
+Key Characteristics
+
+Runs in the browser
+
+Must include "use client" at the top
+
+Can use:
+
+useState, useEffect, useContext
+
+Event handlers (onClick, onChange)
+
+Browser APIs (window, localStorage)
+
+Increases JavaScript bundle size
