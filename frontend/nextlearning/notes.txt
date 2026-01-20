@@ -93,3 +93,10 @@ Event handlers (onClick, onChange)
 Browser APIs (window, localStorage)
 
 Increases JavaScript bundle size
+
+==================================================
+Hooks => Hooks in react js is pre-defined functions which have some special works , generaly
+        use to manage state and lifecycle of react . Used With functional component which our code 
+        more managable and easier.
+
+        foreaxmple: useState,useEffect  ...... etc 
