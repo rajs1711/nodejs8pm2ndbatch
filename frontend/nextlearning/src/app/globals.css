@@ -39,3 +39,10 @@ body {
 .test{
   color:#ededed
 }
+.cardborder{
+    border-radius: 5px;
+    border: 2px solid blue;
+}
+.buttonbg{
+  background: red;
+}

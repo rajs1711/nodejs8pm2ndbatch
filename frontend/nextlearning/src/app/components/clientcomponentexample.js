@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
-
+import { useState ,useEffect } from "react";
+import Card from "./card";
+/*
 export default function ClientComponentExample(){
 
     async function handleClick() {
@@ -22,5 +23,36 @@ export default function ClientComponentExample(){
           
           </>
     )
+
+}
+*/
+export default function ClientComponentExample(){
+
+     //const [data,setData]=useState([{body:'loading..',title:'loading..'}]);
+     const [data,setData]=useState([{body:'loading..',title:'loading..'}]);
+
+     useEffect(()=>{
+         
+        const fetchData=async ()=>{
+           //API CALL using Javascript fetch() method 
+           // Fetch is a method of javascript use to call API.
+
+           const myapi='https://jsonplaceholder.typicode.com/posts'
+           const res=await fetch(myapi);
+           const json_response=await res.json();
+           
+           //setData(json_response[0])
+           setData(json_response)
+           //console.log(json_response)
+        }
+        fetchData()
+
+     },[])// dependecy array
+     
+     return(
+        <>
+         <Card mydata={data}/>
+        </>
+     )
 
 }
