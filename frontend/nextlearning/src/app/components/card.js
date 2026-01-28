@@ -2,8 +2,6 @@ import Link from "next/link"
 
 export default function card({mydata}){
        
-      console.log(mydata);
-
     return(
         <>
         {

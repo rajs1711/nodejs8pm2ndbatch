@@ -15,11 +15,11 @@ const signupFunction= async (req,res)=>{
         const user= await signupModel.find({email:email}); // if found user.length =1
 
         if(user.length >0){
-            return res.json({"msg":"ERROR: Username/email should be unique","data":req.body});
+            return res.json({"msg":"ERROR: Username/email should be unique","data":req.body,"code":"error"});
         }else{
             const user_mobile= await signupModel.find({mobile:mobile});
             if(user_mobile.length >0){
-             return res.json({"msg":"ERROR: Mobile should be unique","data":req.body});
+             return res.json({"msg":"ERROR: Mobile should be unique","data":req.body,"code":"error"});
             }
         }
 
@@ -41,9 +41,9 @@ const signupFunction= async (req,res)=>{
          });
 
          
-        return res.json({"msg":"your account created successfully","data":result});
+        return res.json({"msg":"your account created successfully","data":result,"code":"success"});
     }catch(err){
-        return res .json({"msg":"Internal Server Error","status":500,"err":err})
+        return res .json({"msg":"Internal Server Error","status":500,"err":err,"code":"error"})
     }
 }
 
