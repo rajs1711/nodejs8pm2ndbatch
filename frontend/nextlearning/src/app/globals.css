@@ -46,3 +46,9 @@ body {
 .buttonbg{
   background: red;
 }
+.msg{
+  color:green !important;
+}
+.errormsg{
+  color:red !important;
+}
