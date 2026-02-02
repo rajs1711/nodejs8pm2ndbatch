@@ -63,20 +63,21 @@ const loginFunction=async(req,res)=>{
                 {expiresIn:"1h"}
                );
                 // return token
-                 return res.json({"msg":"Login Successfully","status":200,"token":token});
+                 return res.json({"msg":"Login Successfully","status":200,"token":token,"code":"success"});
             }else{
-                 return res.json({"msg":"Wrong password","status":400});
+                 return res.json({"msg":"Wrong password","status":400,"code":"error"});
             }
 
     }else{
-       return res.json({"msg":"Email Not Exist","status":400})
+       return res.json({"msg":"Email Not Exist","status":400,"code":"error"})
     }
 
 }
 
 const profileFunction=async(req,res)=>{
 
-    const {email}=req.body
+    const email=req.user.email;
+    console.log(email)
     const user= await signupModel.find({email:email},{name:1,mobile:1}); 
     if(user.length > 0 ){
           const userDetail={
