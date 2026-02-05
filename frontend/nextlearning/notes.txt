@@ -103,3 +103,21 @@ Hooks => Hooks in react js is pre-defined functions which have some special work
 ================================
 cookies:
 Cookies are small text files, often encrypted, stored on a user's computer by a web browser while browsing websites. They are used to remember information about users, such as login credentials, shopping cart items, and browsing preferences, ensuring a personalized and functional experience
+
+
+ASSIGNMENT
+==================
+
+1. create order page 
+2. order list
+3. add to cart 
+4. filter( veg veg recipie list nov-veg -recipie list)
+6. change password
+
+
+useEffect, useState.
+
+useMemo=>this is used when we have complex calculation 
+
+PropsDrilling:
+It means passing data (props) from a parent component down through multiple layers of child components, even when some of those middle components don’t actually need the data themselves.

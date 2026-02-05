@@ -82,7 +82,8 @@ const profileFunction=async(req,res)=>{
     if(user.length > 0 ){
           const userDetail={
             name:user[0].name,
-            mobile:user[0].mobile
+            mobile:user[0].mobile,
+            email:req.user.email
           }
           const name=user[0].name;
           const mobile=user[0].mobile;

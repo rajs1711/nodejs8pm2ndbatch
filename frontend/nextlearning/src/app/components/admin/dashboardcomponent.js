@@ -14,23 +14,26 @@ export default function Dashboardcomponent({mydata}){
                  //API CALL using Javascript fetch() method 
                  // Fetch is a method of javascript use to call API.
       
-              const res= await axios.post('http://localhost:8082/api/v1/profile',{
-              email:formData.get("email")
-              })
-                 
-                 setData(res)
-                 console.log(json_response)
+              const res= await axios.post(
+               'http://localhost:8082/api/v1/profile',
+               {},
+               {
+               headers:{
+               Authorization:`Bearer ${token}`
+              }});
+
+               setData(res.data)
               }
               fetchData()
       
            },[])// dependecy array
            
-
+ 
       return(
           <>
-            <h1>Dashboard</h1>
-            <h2>Hello Raj</h2>
-            <h3>How Can i help you ?</h3>
+            <h1>Name :{data?.userDetail?.name &&(data.userDetail.name)}</h1>
+            <h2>Email :{data?.userDetail?.email &&(data.userDetail.email)}</h2>
+            <h3>Mobile:{data?.userDetail?.mobile &&(data.userDetail.mobile)}</h3>
           </>
       )
     }else{
