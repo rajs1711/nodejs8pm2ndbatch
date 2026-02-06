@@ -4,6 +4,8 @@ import Link from 'next/link'
 import Navbar  from './components/navbar'
 import Footer from './components/footer'
 
+import { SampleProvider } from "./context/SampleContext";
+
 
 
 
@@ -28,6 +30,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SampleProvider>
         <Navbar/>  {/* component call*/}
         {children}
         <Footer/> {/* component call*/}
@@ -40,6 +43,7 @@ export default function RootLayout({ children }) {
               </nav> 
 
         </div>*/}
+        </SampleProvider>
       </body>
     </html>
   );

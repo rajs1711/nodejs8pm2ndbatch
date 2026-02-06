@@ -3,11 +3,14 @@ import Cookies from "js-cookie"
 import { useEffect ,useState} from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
+import { useSample } from "../../context/SampleContext"
+
 export default function Dashboardcomponent({mydata}){
     const token=Cookies.get("token");
     const router=useRouter()
     if(token){
       const [data,setData]=useState();
+      const{userinfo,setUserinfo}=useSample()
            useEffect(()=>{
                
               const fetchData=async ()=>{
@@ -23,6 +26,7 @@ export default function Dashboardcomponent({mydata}){
               }});
 
                setData(res.data)
+               setUserinfo(res.data)// context
               }
               fetchData()
       
