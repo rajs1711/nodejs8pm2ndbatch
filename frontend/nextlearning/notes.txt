@@ -100,3 +100,6 @@ Hooks => Hooks in react js is pre-defined functions which have some special work
         more managable and easier.
 
         foreaxmple: useState,useEffect  ...... etc 
+================================
+cookies:
+Cookies are small text files, often encrypted, stored on a user's computer by a web browser while browsing websites. They are used to remember information about users, such as login credentials, shopping cart items, and browsing preferences, ensuring a personalized and functional experience
