@@ -15,6 +15,7 @@ export default function Navigationlinks(){
            [
             {href:'/',text:'Home', key:'home'},
             {href:'/dashboard',text:'dashboard', key:'dashboard'},
+            {href:'/orderhistory',text:'orderhistory', key:'orderhistory'},
             {href:'/login',text:'logout', key:'logout'},
            ]
            :

@@ -52,3 +52,14 @@ body {
 .errormsg{
   color:red !important;
 }
+table {
+  border: 1px solid black;
+}
+
+td, th {
+  border: 1px solid #333;
+  padding: 8px;
+}
+.linkcolor{
+  color:blue;
+}
